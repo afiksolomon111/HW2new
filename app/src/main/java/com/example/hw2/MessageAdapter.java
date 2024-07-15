@@ -65,6 +65,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageViewHolder> {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.message,parent,false);
         MessageViewHolder viewHolder = new MessageViewHolder(view);
         return viewHolder;
+
     }
 
     @Override
@@ -82,11 +83,15 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageViewHolder> {
                         (Activity) v.getContext(),
                         holder.Card,
                         "cardTransition"
+
                 );
                 v.getContext().startActivity(intent,options.toBundle());
             }
+
         });
     }
+
+
 
     @Override
     public int getItemCount() {
