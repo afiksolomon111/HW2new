@@ -55,15 +55,14 @@ public class MainActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                throw new RuntimeException("Test carsh!");
-               // Intent i = new Intent(MainActivity.this,AddMessageActivity.class);
-               // activityResultLauncher.launch(i);
+                Intent i = new Intent(MainActivity.this,AddMessageActivity.class);
+                activityResultLauncher.launch(i);
             }
         });
 
     }
 
     private void handleData(Intent data) {
-        //handle data if neccessary
+        //handle data if necessary
     }
 }
