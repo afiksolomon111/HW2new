@@ -37,7 +37,6 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageViewHolder> {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            Messages.clear();
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Message c = new Message(document.get("Avatar").toString(),document.get("Name").toString(),document.get("Text").toString(),document.get("ID").toString());
                                 Messages.add(c);
@@ -46,17 +45,6 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageViewHolder> {
                         }
                     }
                 });
-        db.collection("Messages").addSnapshotListener(new EventListener<QuerySnapshot>() {
-            @Override
-            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                Messages.clear();
-                for (QueryDocumentSnapshot document : value) {
-                    Message c = new Message(document.get("Avatar").toString(),document.get("Name").toString(),document.get("Text").toString(),document.get("ID").toString());
-                    Messages.add(c);
-                }
-                notifyDataSetChanged();
-            }
-        });
     }
 
     @NonNull
